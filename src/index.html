@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html ng-app="todoApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>To Do List</title>
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.css" />
+    <!-- endbower -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styling.css">
+    <!-- endinject -->
+</head>
+
+<body ng-controller="TodoController as vm">
+    <!-- Navigation Bar wtih responsive collaspible menue  -->
+    <nav class="navbar navbar-custom" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Lenny Castaneda's</a>
+            <a href="#" class="navbar-brand">Todo List App</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse pull-right">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="mailto: lenny.castaneda@gmail.com">Contact Lenny</a></li>
+                <!-- Put here your menu items -->
+                <a href="mailto: lenny.castaneda@gmail.com"><img src="img/email-sociocon.png" width="30" alt="Email"></a>&nbsp;
+                <a class="hover" href="https://www.linkedin.com/in/lennyjcastaneda"><img src="img/github-sociocon.png" width="30" alt="LinkedIn"></a>&nbsp;
+                <a href="https://github.com/LennyCastaneda"><img src="img/linkedin-sociocon.png" width="30" alt="GitHub"></a>&nbsp;
+            </ul>
+        </div <!--/.navbar-collapse -->
+    </nav>
+    <!-- Navigation Bar -->
+    <div class=wrapper>
+        <div class="container">
+            <!-- Set-up input todo list form -->
+            <div class="row" id="row1">
+                <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    <form ng-submit="vm.addNew()" class="form-horizontal" role="form">
+                        <div>
+                            <legend>Add Todo Item</legend>
+                        </div>
+                        <div class="form-group">
+                            <label for="input-id" class="col-sm-2">Enter a Task:</label>
+                            <input type="text" class="form-control" required="required" title="Text" ng-model="vm.newTodo.task" placeholder="Enter a task here">
+                        </div>
+                        <div class="form-group">
+                            <label for="input-id" class="col-sm-2">Priority:</label>
+                            <select name="prioritySelect" class="form-control" required="required" ng-model="vm.newTodo.priority">
+                                <option value="">Select a Priority</option>
+                                <option class="warning" value="a_high">High Priority</option>
+                                <option class="info" value="b_medium">Medium Priority</option>
+                                <option class="danger" value="c_low">Low Priority</option>
+                            </select>
+                        </div>
+                        <div>
+                            <input type="hidden" ng-model="vm.newTodo.complete" ng-init="vm.newTodo.complete = false">
+                        </div>
+                        <input type="submit" value="Submit" class="btn btn-success btn-lg" id="submit_Button">
+                    </form>
+                    <hr>
+                </div>
+                <!-- Sort priority buttons -->
+                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-10">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                            <a type="submit" href="" class="btn btn-primary btn-lg" ng-click="taskPriority = '+priority';">Order by highest priority</a>
+                            <a type="submit" href="" class="btn btn-primary btn-lg" ng-click="taskPriority = '-priority';">Order by lowest priority</a>
+                            <a type="submit" href="" class="btn btn-primary btn-lg" ng-click="taskPriority = 'task';">Order Alphabetically</a>
+                        </div>
+                    </div>
+                    <!-- Container div -->
+                    <br>
+                    <!-- Break space below -->
+                    <!-- Set-up of dynamic table -->
+                    <div class="row">
+                        <!-- Table row div -->
+                        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>TASK</th>
+                                        <th>COMPLETED</th>
+                                        <th>EDIT</th>
+                                        <th>DELETE</th>
+                                    </tr>
+                                </thead>
+                                <tbody ng-model='vm.todos'>
+                                    <tr class="" ng-repeat="todo in vm.todos | orderBy:taskPriority" ng-class="
+									{
+									warning : todo.priority === 'a_high', 
+									info : todo.priority === 'b_medium', 
+									danger : todo.priority === 'c_low'
+									}">
+                                        <td width="55%">
+                                            <div ng-hide="editTask">{{todo.task}}</div>
+                                            <!-- Binding data to todo list table -->
+                                            <div ng-show="editTask">
+                                                <input type="text" ng-model="todo.task" id="editTask" width="300" id="editTextBox">
+                                            </div>
+                                        </td>
+                                        <td width="35%">
+                                            <!-- Completed checkbox -->
+                                            <div ng-hide="editTask">
+                                                <label>
+                                                    <input type="checkbox" ng-model="todo.complete" ng-click="vm.removeRow(todo.id,todo)"> Completed</label>
+                                            </div>
+                                        </td>
+                                        <td width="5%">
+                                            <!-- Make edits button -->
+                                            <button type="button" class="btn btn-success" ng-click="editTask = !editTask" ng-hide="editTask">
+                                                <span class="glyphicon glyphicon-pencil"></span>
+                                            </button>
+                                            <!-- Save edits button -->
+                                            <button type="button" class="btn btn-primary" ng-click="editTask = !editTask; vm.editRow(todo.id,todo)" ng-show="editTask">
+                                                <span class="glyphicon glyphicon-ok"></span>
+                                            </button>
+                                        </td>
+                                        <td width="5%">
+                                            <!-- Delete button -->
+                                            <button type="button" class="btn btn-danger" ng-click="vm.removeRow(todo.id)" ng-hide="editTask">
+                                                <span class="glyphicon glyphicon-remove"></span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!-- Main table div -->
+                        </div>
+                        <!-- Columns div -->
+                    </div>
+                    <!-- Table row div -->
+                </div>
+                <!-- Sort priority buttons div -->
+            </div>
+            <!-- Todo list form -->
+        </div>
+        <!-- Container div class -->
+        <!-- Sticky footer div-->
+        <div class="stick-footer"></div>
+    </div>
+    <!-- Wrapp div class -->
+    <div class="footer">
+        <br>
+        <div class="icons">
+            <span>&copy; Lenny Castaneda</span>
+            <a href="mailto: lenny.castaneda@gmail.com"><img src="img/email-sociocon.png" width="30" alt="Email"></a>&nbsp;
+            <a class="hover" href="https://www.linkedin.com/in/lennyjcastaneda"><img src="img/github-sociocon.png" width="30" alt="LinkedIn"></a>&nbsp;
+            <a href="https://github.com/LennyCastaneda"><img src="img/linkedin-sociocon.png" width="30" alt="GitHub"></a>&nbsp;
+        </div>
+    </div>
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+    <script src="bower_components/angular-toArrayFilter/toArrayFilter.js"></script>
+    <!-- endbower -->
+    <!-- inject:js -->
+    <script src="app/app.js"></script>
+    <script src="app/todo.factory.js"></script>
+    <script src="app/todos.controller.js"></script>
+    <!-- endinject -->
+</body>
+
+</html>

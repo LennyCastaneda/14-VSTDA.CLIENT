@@ -1,0 +1,355 @@
+/* ============================
+	Base Element Styles
+===============================*/
+
+body{
+	
+	font-size: 14px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	line-height: 20px;
+	background-color: #fff;
+}
+
+
+h1 {
+	margin-top: 0;
+	margin-bottom: 0;
+	padding-top: .5em;
+	color: #b6c9c9;
+	text-shadow: 2px 2px 4px #000000;
+	font-family: 'Architects Daughter';
+	font-size: 2em;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26px;	
+}
+
+form {
+	margin-left: 1em;
+	padding-top: 1em;
+	padding-bottom: 2em;
+}
+
+table {
+	margin-left: 1em;
+}
+
+label {
+/* 	font-family: 'Architects Daughter'; */
+	font-size: 17px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 15px;
+}
+
+/* ============================
+	Nav Bar Styles
+===============================*/
+
+.navbar-nav {
+    margin: 10.5px -15px;
+    display: inline-flex;
+}
+
+.navbar-custom {
+  background-color: #cc0000;
+  border-radius: 0px;
+  border-color: #ab0000;
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#ff0000), to(#cc0000));
+  background-image: -webkit-linear-gradient(top, #ff0000, 0%, #cc0000, 100%);
+  background-image: -moz-linear-gradient(top, #ff0000 0%, #cc0000 100%);
+  background-image: linear-gradient(to bottom, #ff0000 0%, #cc0000 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffff0000', endColorstr='#ffcc0000', GradientType=0);
+}
+.navbar-custom .navbar-brand {
+  color: #ffffff;
+   border-radius: 0px;
+}
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .navbar-brand:focus {
+  color: #e6e6e6;
+  background-color: transparent;
+}
+.navbar-custom .navbar-text {
+  color: #ffffff;
+}
+.navbar-custom .navbar-nav > li:last-child > a {
+  border-right: 1px solid #ab0000;
+}
+.navbar-custom .navbar-nav > li > a {
+  color: #ffffff;
+  border-left: 1px solid #ab0000;
+}
+.navbar-custom .navbar-nav > li > a:hover,
+.navbar-custom .navbar-nav > li > a:focus {
+  color: #c0c0c0;
+  background-color: transparent;
+}
+.navbar-custom .navbar-nav > .active > a,
+.navbar-custom .navbar-nav > .active > a:hover,
+.navbar-custom .navbar-nav > .active > a:focus {
+  color: #c0c0c0;
+  background-color: #ab0000;
+  background-image: -webkit-gradient(linear, left 0%, left 100%, from(#ab0000), to(#de0000));
+  background-image: -webkit-linear-gradient(top, #ab0000, 0%, #de0000, 100%);
+  background-image: -moz-linear-gradient(top, #ab0000 0%, #de0000 100%);
+  background-image: linear-gradient(to bottom, #ab0000 0%, #de0000 100%);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffab0000', endColorstr='#ffde0000', GradientType=0);
+}
+.navbar-custom .navbar-nav > .disabled > a,
+.navbar-custom .navbar-nav > .disabled > a:hover,
+.navbar-custom .navbar-nav > .disabled > a:focus {
+  color: #cccccc;
+  background-color: transparent;
+}
+.navbar-custom .navbar-toggle {
+  border-color: #dddddd;
+  border-radius: 0px;
+}
+.navbar-custom .navbar-toggle:hover,
+.navbar-custom .navbar-toggle:focus {
+  background-color: #dddddd;
+}
+.navbar-custom .navbar-toggle .icon-bar {
+  background-color: #cccccc;
+}
+.navbar-custom .navbar-collapse,
+.navbar-custom .navbar-form {
+  border-color: #a80000;
+}
+.navbar-custom .navbar-nav > .dropdown > a:hover .caret,
+.navbar-custom .navbar-nav > .dropdown > a:focus .caret {
+  border-top-color: #c0c0c0;
+  border-bottom-color: #c0c0c0;
+}
+.navbar-custom .navbar-nav > .open > a,
+.navbar-custom .navbar-nav > .open > a:hover,
+.navbar-custom .navbar-nav > .open > a:focus {
+  background-color: #ab0000;
+  color: #c0c0c0;
+}
+.navbar-custom .navbar-nav > .open > a .caret,
+.navbar-custom .navbar-nav > .open > a:hover .caret,
+.navbar-custom .navbar-nav > .open > a:focus .caret {
+  border-top-color: #c0c0c0;
+  border-bottom-color: #c0c0c0;
+}
+.navbar-custom .navbar-nav > .dropdown > a .caret {
+  border-top-color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+
+/* ============================
+	Wrapper & Containers
+===============================*/
+
+.wrapper {
+	padding-bottom: 200px;
+	max-width: 100%;
+	margin: 0 0%;
+	background-color: #F0FFFF;
+}
+
+.container {
+	/*Establishes the parameters for sticky footer*/
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -20em;
+	max-width: 100%
+}
+
+.main-header {
+	text-align: center;
+	height: 100px;
+	font-family: 'Righteous', cursive;
+	font-size: 3rem;
+	background-color: #c9ae00;
+	background-position: center;
+}
+
+/* Wrapper for page content to push down footer */
+div.wrapper {
+  min-height: calc(100vh - 142px);
+  /* Negative indent footer by its height */
+  margin: 0px auto 0px;
+  /* Pad bottom by footer height */
+  padding: 0 0px 0px;
+}
+
+/* ============================
+	Priority Table
+===============================*/
+
+.high_Priority {
+	background-color: red;
+}
+
+.medium_Priority {
+	background-color: yellow;
+}
+
+.low_Priority {
+	background-color: green;
+}
+
+#row1 {
+	margin-bottom: 0em;
+}
+
+#todoList {
+	text-align: left;
+}
+
+.editTask {
+	background: none;
+}
+
+/* ============================
+	Buttons
+===============================*/
+
+.btn-lg, .btn-group-sm > .btn {
+    padding: 5px 20px;
+    margin-bottom: 15px;
+}
+
+.btn {
+
+    padding: 6px 20px;
+}
+
+/* ============================
+	Footer
+===============================*/
+
+.footer {
+	position: relative;
+	right:  0;
+	bottom:  0;
+	left:  0;
+	padding:  .9rem;
+	margin-top: 0px;
+	text-align: center;
+background-image: linear-gradient(to bottom, #ff0000 0%, #cc0000 100%);
+	color:  white;
+} 
+
+.stick-footer {
+	height: 1em;
+}
+
+/*Establishes the parameters for sticky footer*/
+.footer {
+	font-size: 1em;
+	height: 5em;
+	clear: both;
+	text-align: center;
+}
+
+/* ============================
+	Media Quieries
+===============================*/
+
+@media (min-width: 768px) {}
+	.col-sm-12 {
+    width: 100%;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 20px;
+}
+.navbar-nav > li > a {
+    padding-top: 5px;
+    padding-bottom: 15px;
+}
+
+@media (max-width: 767) {
+
+  .navbar-custom .navbar-nav .open .dropdown-menu > li > a {
+    color: #ffffff;
+}
+  .navbar-custom .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-custom .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #c0c0c0;
+    background-color: transparent;
+}
+  .navbar-custom .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar-custom .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #c0c0c0;
+    background-color: #ab0000;
+}
+  .navbar-custom .navbar-nav .open .dropdown-menu > .disabled > a,
+  .navbar-custom .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+  .navbar-custom .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+    color: #cccccc;
+    background-color: transparent;
+  }
+}
+	.navbar-custom .navbar-link {
+	  color: #ffffff;
+}
+	.navbar-custom .navbar-link:hover {
+	  color: #c0c0c0;
+}
+
+@media (min-width: 792px) {
+	.wrap {
+		min-height: calc(100vh - 142px);
+}
+	.container {
+		width: 80%;
+		max-width: 1150px;
+		margin: 0 auto;
+}
+	.col-sm-2 {
+		width:  70.667%;
+		float: center;
+}
+
+.todoForm {
+	margin: 1px auto;
+}
+
+	/* ---- Float clearfix ---- */
+
+	.clearfix::after {
+		content: " ";
+		display: table;
+		clear: both;
+	}
+}
+
+@media (min-width: 992px) {
+	.col-md-8 {
+	    width: 66%;
+	}
+	.todoForm {
+    	width: 100%;
+	}
+	.col-md-4 {
+	    width: 30%;
+}
+
+@media (max-width: 992px) {
+	.todoForm {
+    	width: 100%;
+	}
+}
+
+
+
+@media (min-width: 1025px) {
+	.container {
+		width: 100%;
+		max-width: 1150px;
+	}
+
+}
+
